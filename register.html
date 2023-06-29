@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projects App - AntColony</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+<main>
+    <div class="container">
+        <!-- Three columns of text below the carousel -->
+
+        <div class="row">
+            <div class="col-4 offset-4 login-box">
+                <h3 class="text-center">Registration</h3>
+                <form id="register-form" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">First name</label>
+                        <input type="text" name="first_name" class="form-control" value="" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last name</label>
+                        <input type="text" name="last_name" class="form-control" value="" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" value="" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" value="" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <br/>
+                    <p style="float:right;">You have account. <a href="/antcolony-final/login.html">Login here!</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="js/user-service.js"></script>
+<script type="text/javascript">
+    UserService.init();
+</script>
+</body>

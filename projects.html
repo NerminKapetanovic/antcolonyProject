@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects App - AntColony</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Projects App - AntColony</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/antcolony-final/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/antcolony-final/projects.html">Projects</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-success" type="button" onclick="UserService.logout()">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container marketing" style="margin-top:100px;">
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div>
+                <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#addProjectModal">Add new project</button>
+            </div>
+        </div>
+        <hr/>
+        <div id="projects-list" class="row">
+            <div class="spinner-border" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div><!-- /.row -->
+    </div>
+
+</main>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="js/user-service.js"></script>
+<script src="js/project-service.js"></script>
+
+
+<!-- Add/Update Modal -->
+<div class="modal fade" id="addProjectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="addProjectForm">
+                <input type="hidden" name="id" value="0"/>
+                <input type="hidden" id="user_id" name="user_id" value="0">
+                <div class="modal-header">
+                    <h5 class="modal-title">Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input name="title" type="text" class="form-control required" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" rows="3" class="form-control" placeholder="Enter description"></textarea>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label>GIT link</label>
+                        <input name="git_link" type="text" class="form-control required" placeholder="Enter Git link">
+                    </div>
+                    <div class="form-group">
+                        <label>GIT user name</label>
+                        <input name="git_user" type="text" class="form-control required" placeholder="Enter Git user name">
+                    </div>
+                    <div class="form-group">
+                        <label>GIT user password</label>
+                        <input name="git_password" type="password" class="form-control required" placeholder="Enter Git password">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label>Commands to execute</label>
+                        <textarea name="commands" rows="4" class="form-control required" placeholder="Enter commands"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var token = localStorage.getItem("token");
+    if (token){
+        ProjectService.init();
+        $('#user_id').val(UserService.getUserData()['id']);
+    }else{
+        window.location.replace("login.html");
+    }
+
+    $("#addProjectModal").on("hidden.bs.modal", function () {
+        ProjectService.clearForm();
+    });
+</script>
+</body>
+</html>

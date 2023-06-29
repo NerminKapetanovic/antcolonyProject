@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects App - AntColony</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Projects App - AntColony</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/antcolony-final/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/antcolony-final/projects.html">Projects</a>
+                    </li>
+                  
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-success" type="button" onclick="UserService.logout()">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container marketing" style="margin-top:100px;">
+        <h1>Hello <span id="user"></span>!</h1>
+        <h3 class="text-muted">Welcome  to the web part of this project</h3>
+    </div>
+
+</main>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="js/user-service.js"></script>
+<script src="js/project-service.js"></script>
+
+<script>
+
+    var token = localStorage.getItem("token");
+    if (!token){
+        window.location.replace("login.html");
+    }else{
+        $('#user').text(UserService.getUserData()['first_name'] + ' ' + UserService.getUserData()['last_name']);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.login-box{
+    background-color: #fff2f2;
+    padding: 30px;
+    box-shadow: 2px 2px 7px gray;
+    border: 5px solid white;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+.error {
+    color: red;
+}
